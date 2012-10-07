@@ -15,8 +15,17 @@ def main():
 				 distance = distance)
 
 def generate_xml(race_date = datetime.date.today() + datetime.timedelta(days=7*30),
-				 days_per_week = 3):
-	pass	
+				 days_per_week = 3,
+				 distance = 42195):
+	root = ET.Element("TrainingCenterDatabase", 
+		{"xmlns":"http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v1", 
+		"xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+		"xsi:schemaLocation":"http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v1 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev1.xsd"})
+	workouts = ET.SubElement(root, "Workouts")
+	running = ET.SubElement(workouts, "Running", {"Name":"Running"})
+	folder = ET.SubElement(running, "Folder", {"Name":"Generated {0}".format(datetime.datetime.today())})
+	workout = ET.SubElement(folder)
 
+	
 if __name__ == '__main__':
 	main()
