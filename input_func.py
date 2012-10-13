@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import datetime
-import dateutil
+from dateutil.parser import parse
+import distance_parse
 
 def suffix(d):
     return 'th' if 11<=d<=13 else {1:'st',2:'nd',3:'rd'}.get(d%10, 'th')
@@ -30,11 +31,11 @@ def confirm(prompt_string="Confirm",
     else:
       print "Please enter yes or no.\n"
 
-def get_date(): 
+def get_race_date(): 
 	while True:
 		try:
 			date = raw_input("What is the date of your race? ")
-			race_date = dateutil.parser.parse(date)
+			race_date = parse(date)
 			pretty_date = custom_strftime("%A, %B {S}, %Y", race_date)
 			if confirm(prompt_string="Your race is on {0}?".format(pretty_date), 
 						allow_empty=True, 
@@ -53,3 +54,28 @@ def get_int(prompt, low=1, high=7):
 		except ValueError:
 			print "Unable to parse input: {0}".format(int_candidate)
 	return return_int
+
+def get_race_distance():
+	prompt = "What is the distance of your race (5 k, 1 marathon, etc.)? "
+
+	while True:
+		try:
+			distance = raw_input(prompt)
+			try: input_unit = distance.split()[-1]
+			except IndexError: input_unit = None
+
+			while input_unit not in distance_parse.Distance.UNITS:
+				print "Unable to parse unit {0}\n".format(input_unit)
+				
+				distance = raw_input(prompt)
+				try: input_unit = distance.split()[-1]
+				except IndexError: input_unit = None
+
+			race_dist = distance_parse.Distance(distance)
+			if confirm(prompt_string="Your race distance is {0}?".format(distance), 
+						allow_empty=True, 
+						default=True):
+				break
+		except ValueError:
+			print "Unable to parse input: {0}\n".format(distance)
+	return race_dist
