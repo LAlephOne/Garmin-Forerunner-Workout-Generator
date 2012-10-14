@@ -1,0 +1,47 @@
+<Workout>
+	<Name>Fartlek 6M, wu/</Name>
+	<Step xsi:type="Step_t">
+		<StepId>1</StepId>
+		<Duration xsi:type="Distance_t">
+			<Meters>1609</Meters>
+		</Duration>
+		<Intensity>Active</Intensity>
+		<Target xsi:type="HeartRate_t">
+			<HeartRateZone xsi:type="CustomHeartRateZone_t">
+				<Low xsi:type="HeartRateAsPercentOfMax_t">
+					<Value>69</Value>
+				</Low>
+				<High xsi:type="HeartRateAsPercentOfMax_t">
+					<Value>74</Value>
+				</High>
+			</HeartRateZone>
+		</Target>
+	</Step>
+	<Step xsi:type="Step_t">
+		<StepId>2</StepId>
+		<Duration xsi:type="Distance_t">
+			<Meters>9656</Meters>
+		</Duration>
+		<Intensity>Active</Intensity>
+		<Target xsi:type="None_t"/>
+	</Step>
+	<Step xsi:type="Step_t">
+		<StepId>3</StepId>
+		<Duration xsi:type="Distance_t">
+			<Meters>1609</Meters>
+		</Duration>
+		<Intensity>Active</Intensity>
+		<Target xsi:type="HeartRate_t">
+			<HeartRateZone xsi:type="CustomHeartRateZone_t">
+				<Low xsi:type="HeartRateAsPercentOfMax_t">
+					<Value>69</Value>
+				</Low>
+				<High xsi:type="HeartRateAsPercentOfMax_t">
+					<Value>74</Value>
+				</High>
+			</HeartRateZone>
+		</Target>
+	</Step>
+	<ScheduledOn>2011-11-22</ScheduledOn>
+	<Notes>1 mile jog, then 6 miles fartlek, then 1 mile jog</Notes>
+</Workout>
